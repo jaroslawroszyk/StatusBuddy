@@ -1,13 +1,15 @@
 [package]
-name = "status_buddy"
+name = "auto_clicker_rs"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+eframe = "0.31.1"
 enigo = "0.3.0"
+frame = "0.0.0"
 rdev = "0.5.3"
 structopt = "0.3.26"
 
 [[bin]]
-name = "status_buddy"
+name = "auto_clicker_rs"
 path = "src/main.rs"

@@ -3,7 +3,7 @@ use std::sync::{
     atomic::{AtomicUsize, Ordering},
 };
 
-use status_buddy::mousecontroller::MouseController;
+use auto_clicker_rs::mousecontroller::MouseController;
 
 #[derive(Clone)]
 pub struct MockMouseController {

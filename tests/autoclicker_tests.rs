@@ -3,7 +3,7 @@ mod mocks;
 use std::sync::atomic::Ordering;
 
 use mocks::mock_mouse_controller::MockMouseController;
-use status_buddy::autoclicker::AutoClicker;
+use auto_clicker_rs::autoclicker::AutoClicker;
 
 #[test]
 fn test_do_one_click_calls_mouse_methods() {
