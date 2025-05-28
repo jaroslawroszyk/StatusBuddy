@@ -4,7 +4,7 @@ mod mousecontroller;
 
 use autoclicker::AutoClicker;
 use config::Config;
-use mousecontroller::{EnigoMouse};
+use mousecontroller::EnigoMouse;
 use std::env;
 
 fn main() {

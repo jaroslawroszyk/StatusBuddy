@@ -12,7 +12,9 @@ pub struct EnigoMouse {
 
 impl EnigoMouse {
     pub fn new() -> Result<Self, String> {
-        Ok(Self { enigo: Enigo::new(&Settings::default()).map_err(|e| e.to_string())? })
+        Ok(Self {
+            enigo: Enigo::new(&Settings::default()).map_err(|e| e.to_string())?,
+        })
     }
 }
 

@@ -1,11 +1,9 @@
-
 mod mocks;
 
 use std::sync::atomic::Ordering;
 
 use mocks::mock_mouse_controller::MockMouseController;
 use status_buddy::autoclicker::AutoClicker;
-
 
 #[test]
 fn test_autoclicker_creation() {
