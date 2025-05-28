@@ -3,15 +3,6 @@
 version = 4
 
 [[package]]
-name = "StatusBuddy"
-version = "0.1.0"
-dependencies = [
- "enigo",
- "rdev",
- "structopt",
-]
-
-[[package]]
 name = "ansi_term"
 version = "0.12.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -463,6 +454,15 @@ dependencies = [
  "libc",
  "winapi",
  "x11",
+]
+
+[[package]]
+name = "status_buddy"
+version = "0.1.0"
+dependencies = [
+ "enigo",
+ "rdev",
+ "structopt",
 ]
 
 [[package]]
