@@ -1,5 +1,3 @@
-use enigo::{Button, Coordinate::Abs, Direction::Click, Enigo, Mouse, Settings};
-use rdev::{Button as RdevButton, Event, EventType, Key, listen};
 use std::{
     sync::{
         Arc,
@@ -10,21 +8,21 @@ use std::{
     time::Duration,
 };
 
-pub struct AutoClicker {
-    enigo: Enigo,
+use crate::mousecontroller::MouseController;
+use rdev::{Button as RdevButton, Event, EventType, Key, listen};
+
+pub struct AutoClicker<M: MouseController> {
+    mouse: M,
     click_interval_secs: u64,
     running: Arc<AtomicBool>,
 }
 
-impl AutoClicker {
-    pub fn new(click_interval_secs: u64) -> Self {
-        let enigo = Enigo::new(&Settings::default()).expect("Failed to initialize Enigo");
-        let running = Arc::new(AtomicBool::new(true));
-
+impl<M: MouseController> AutoClicker<M> {
+    pub fn new(mouse: M, click_interval_secs: u64) -> Self {
         Self {
-            enigo,
+            mouse,
             click_interval_secs,
-            running,
+            running: Arc::new(AtomicBool::new(true)),
         }
     }
 
@@ -54,17 +52,13 @@ impl AutoClicker {
 
         match click_rx.recv() {
             Ok(()) => {
-                let (x, y) = self.enigo.location().expect("Failed to get mouse position");
+                let (x, y) = self.mouse.location().expect("Failed to get mouse position");
 
                 println!("Clicked at point ({}, {}). Auto-clicker starting...", x, y);
 
                 while self.running.load(Ordering::SeqCst) {
-                    self.enigo
-                        .move_mouse(x, y, Abs)
-                        .expect("Failed to move mouse");
-                    self.enigo
-                        .button(Button::Left, Click)
-                        .expect("Failed to click mouse");
+                    self.mouse.move_mouse(x, y).expect("Failed to move mouse");
+                    self.mouse.click().expect("Failed to click mouse");
 
                     println!("Clicked at point ({}, {})", x, y);
 
