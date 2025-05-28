@@ -7,3 +7,7 @@ edition = "2024"
 enigo = "0.3.0"
 rdev = "0.5.3"
 structopt = "0.3.26"
+
+[[bin]]
+name = "status_buddy"
+path = "src/main.rs"
